@@ -1,0 +1,39 @@
+Station,Site Name,First Deploy,Current Model,Current Serial,MX2201 Last Measurement,Total Deployments,Notes
+01FW001,Kuzkwa River Below Tezzeron Lake,2020-07-16,MX2203,unknown,2024-08-14 17:15,4,
+01FW002,Endako River Above Stellako River,2023-06-09,MX2203,21731701,2024-07-26 18:45,2,
+01FW003,Cheslatta Lake Above Sather Creek,2023-06-15,MX2203,unknown,2024-05-23 21:30,4,
+01FW004,Stellako River Above Fraser Lake,2023-06-09,MX2203,21731704,2024-03-07 18:45,3,
+01FW005,Nechako At Miworth,2023-04-28,MX2203,21731732,2024-06-19 19:45,2,
+01FW006,Glacier Creek Above Nadina Lake,2023-09-01,MX2203,21731724,2024-06-13 16:45,2,
+01FW007,Otter Creek Below Finger Lake,2023-05-30,MX2203,21731716,2024-07-16 20:45,2,
+01FW008,Cheslatta River Below Murray Lake,2023-05-18,MX2203,21731923,2024-07-18 18:45,2,
+01FW009,Nadina Lake,2023-08-17,MX2203,21731730,2024-05-11 04:15,2,MX2201 ends here; period of Missing (M) flags follows until MX2203 deployment
+01FW010,Skins Lake Spillway,2023-07-04,MX2203,unknown,N/A,3,Still running MX2201 — no MX2203 swap detected in data
+01FW011,Tachie River Above Stuart Lake,2023-06-27,MX2203,21731715,2024-01-28 04:00,2,
+01FW012,Nadina River Below Nadina Lake,2023-08-17,MX2203,unknown,N/A,4,No MX2203 data found — all records still MX2201
+01FW013,Nechako River Off Dellwood Road,2023-05-03,MX2203,21731710,2024-01-28 04:00,3,
+01FW014,Nadina River Above Nadina Lake,2023-08-16,MX2203,unknown,2024-06-13 19:30,3,
+01FW015,Stuart River Above Nechako River,2023-05-03,MX2203,21731718,2025-06-11 16:30,3,
+01FW016,Necoslie River Above Stuart Lake,2023-06-27,MX2203,21731705,2024-08-13 20:45,3,
+01FW017,Nechako Above Cluculz Creek,N/A,N/A,N/A,N/A,0,Nothing in the deployments; assumed MX2201
+01FW018,Chilako River Below Tatuk Lake,2023-06-22,MX2203,21731714,2025-06-26 17:30,3,Entire file under one serial spanning from 2022; 2024-07-17 deployment should be MX2203 but inferred MX2201
+01FW019,Middle River Above Trembleur Lake,2023-06-28,MX2203,21731728,2024-07-30 21:15,2,
+01FW020,Tsilcoh River Above Pinchi Lake,2023-06-27,MX2203,21731699,2024-08-13 22:00,3,
+01FW021,Pinchi Creek Above Stuart Lake,2023-06-27,MX2203,21731729,2024-08-14 15:45,2,
+01FW022,Chilako River Above Nechako River,2023-04-28,MX2203,21731700,2024-06-21 17:45,2,
+01FW023,Kazchek Creek Above Middle River,2023-06-28,MX2203,21731722,N/A,3,MX2201 — no data collected after new logger swap
+01FW024,McMillan Creek Above Nechako River,2023-05-04,MX2203,21731711,2023-12-22 12:45,3,Two loggers? Re-run needed due to A (AVG) flag; check if dual-logger or logger issues
+01FW025,Nechako At Pulpmill Road,2023-05-04,MX2203,21731745,2024-06-19 17:30,2,
+01FW026,BlackWater,2025-05-15,MX2203,unknown,N/A,1,Good as-is (MX2203 only)
+01FW027,Ormond Creek,2025-07-03,MX2203,unknown,N/A,1,No data available
+01FW028,Nithi River,2025-07-03,MX2203,unknown,N/A,1,Good as-is (MX2203 only)
+01MF001,Horsefly River Downstream,2023-07-26,MX2203,N/A,2024-07-10 15:15,2,
+01MF002,Horsefly River Upstream,2023-07-26,MX2203,N/A,N/A,2,"New station, MX2203 only"
+01MF003,McKinley Creek Upstream,2023-07-26,MX2203,N/A,2024-07-10 17:45,2,
+01MF004,McKinley Creek Downstream,2023-07-26,MX2203,N/A,2024-07-10 18:30,2,
+01NE001,Kasalka Creek Above Tahtsa Lake,2023-08-31,MX2203,21731719,2024-06-26 21:15,2,
+01NE002,Whitesail Middle Creek Above Tahtsa Reach,2023-08-31,MX2203,21731707,2024-06-26 22:15,2,
+01NE003,Whiting Creek,2024-06-13,MX2203,21731727,2024-06-13 21:45,1,
+01NE004,Rhine Creek Above Sweeney Creek,2023-08-16,MX2203,21731698,2024-06-13 23:30,3,Has two MX2203 loggers deployed (NHG0312 + NHG0274)
+01NE005,Laventie Creek Above Tahtsa Lake,2023-08-31,MX2203,21731712,2024-06-26 20:00,2,
+01NE006,Chedakuz Creek Above Nechako Reservoir,N/A,N/A,N/A,N/A,0,"OK for now, but for the future make sure it's MX2203 as it doesn't say anything in the deployments"

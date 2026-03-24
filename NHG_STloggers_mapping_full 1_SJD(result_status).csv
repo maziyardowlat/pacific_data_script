@@ -1,0 +1,11 @@
+﻿wtmp_flag,ResultStatusID,ResultComment,ResultDetectionCondition,notes
+P,Validated,Pass,,Data passed quality review
+S,Validated,Spike,,Spike or jump detected in temperature
+E,Validated,Error,,Out of valid range (< -20C or > 50C)
+T,Validated,High temperature,,Temperature >= 35C warning
+B,Validated,Backwater,,Below-freezing / ice conditions (wtmp < 0C)
+M,,Missing,Unable to Measure,No measurement / data gap
+V,Validated,Visit,,Data affected by field visit / equipment disturbance
+D,Validated,Duplicate,,Duplicate timestamp after rounding to 15-min
+A,Validated,Air/Dewatered,,Daily diurnal range > 10C (logger likely out of water)
+F,Validated,Failure,,Sensor failure or data quality issue
