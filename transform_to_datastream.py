@@ -228,11 +228,10 @@ def map_flags(df: pd.DataFrame, result_status_df: pd.DataFrame) -> pd.DataFrame:
     df.loc[missing_mask, "ResultUnit"]                = ""
     df.loc[missing_mask, "ResultDetectionCondition"]  = "Unable to Measure"
 
-    # Per metadata: "All observations carry a ResultStatusID of 'Validated',
-    # with the exception of records where no measurement was possible
-    # (ResultDetectionCondition: Unable to Measure)."
-    # So clear ResultStatusID for ALL missing-value rows, not just no-flag ones.
-    df.loc[missing_mask, "ResultStatusID"] = ""
+    # Per DataStream guidance (Table 5) and Nell's feedback:
+    # Missing rows identified by QA/QC still get ResultStatusID = "Validated"
+    # because the QA/QC protocol was applied to determine they are missing.
+    df.loc[missing_mask, "ResultStatusID"] = "Validated"
 
     df = df.drop(columns=["wtmp_flag"])
 
