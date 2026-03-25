@@ -41,7 +41,7 @@ from pathlib import Path
 # Default DatasetName embedded in every row.
 # Must match exactly what you enter in the DataStream metadata form.
 DEFAULT_DATASET_NAME = (
-    "Sub-hourly Water Temperature Data Collected by UNBC's "
+    "Sub-hourly Water Temperature Data Collected by UNBC\u2019s "
     "Northern Hydrometeorology Group (NHG) across northern BC"
 )
 
@@ -224,8 +224,8 @@ def map_flags(df: pd.DataFrame, result_status_df: pd.DataFrame) -> pd.DataFrame:
     #                           and ResultUnit MUST also be NA.
     #   If ResultDetectionCondition is empty → ResultValue and ResultUnit
     #                                          MUST have real values.
-    df.loc[missing_mask, "ResultValue"]               = "NA"
-    df.loc[missing_mask, "ResultUnit"]                = "NA"
+    df.loc[missing_mask, "ResultValue"]               = ""
+    df.loc[missing_mask, "ResultUnit"]                = ""
     df.loc[missing_mask, "ResultDetectionCondition"]  = "Unable to Measure"
 
     # Per metadata: "All observations carry a ResultStatusID of 'Validated',
@@ -315,15 +315,7 @@ def attach_station_metadata(df: pd.DataFrame, station_row: pd.Series) -> pd.Data
         # Use empty string for any missing optional fields rather than NaN,
         # to keep the output CSV clean
         value = station_row.get(col, "")
-        value = "" if pd.isna(value) else value
-
-        if col in df.columns:
-            # Preserve values already set by earlier steps (e.g. ResultUnit
-            # set to "NA" by map_flags for missing observations)
-            df[col] = df[col].fillna(value)
-            df.loc[df[col] == "", col] = value
-        else:
-            df[col] = value
+        df[col] = "" if pd.isna(value) else value
 
     return df
 
@@ -398,8 +390,8 @@ def process_csv(
     # --- Run transformation steps ---
     df = df.drop(columns=COLS_TO_DROP, errors="ignore")    # drop unused columns
     df = parse_timestamps(df)                               # UTC → UTC-7 + split
-    df = map_flags(df, result_status_df)                    # expand flag column
     df = attach_station_metadata(df, station_row)           # add station info
+    df = map_flags(df, result_status_df)                    # expand flag column (after metadata so it can blank ResultUnit)
     df = assign_logger_model(df, cutoff_utc)                # MX2201 vs MX2203
     df = df.drop(columns=["station_code", "logger_serial", "_timestamp_utc"],
                  errors="ignore")
@@ -534,9 +526,6 @@ def main():
 
         print(f"  {csv_out.name}: {len(combined):,} rows written")
         print(f"  {zip_out.name}: zipped ({zip_out.stat().st_size / 1024:.0f} KB)")
-
-    print("\nDone! Send a sample output to Nell for review before uploading.")
-
 
 if __name__ == "__main__":
     main()
