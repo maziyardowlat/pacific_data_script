@@ -383,6 +383,16 @@ def process_csv(
     else:
         print(f"    No MX2201 cutoff — using default logger from mapping")
 
+    # --- Remap legacy "A" flag (Averaged) → "AVG" for old QA/QC stations ---
+    # New QA/QC stations use "A" for Air/Dewatered (diurnal); all others used
+    # "A" for Averaged. Swap to "AVG" so map_flags assigns the correct label.
+    NEW_QAQC_STATIONS = {"01MF001", "01MF002", "01MF003", "01MF004", "01FW004", "01FW015", "01FW028"}
+    if station_code not in NEW_QAQC_STATIONS and "wtmp_flag" in df.columns:
+        a_count = (df["wtmp_flag"] == "A").sum()
+        if a_count > 0:
+            df.loc[df["wtmp_flag"] == "A", "wtmp_flag"] = "AVG"
+            print(f"    Remapped {a_count:,} 'A' flags → 'AVG' (legacy Averaged)")
+
     # --- Rename wtmp → ResultValue before further processing ---
     df = df.rename(columns={"wtmp": "ResultValue"})
 
