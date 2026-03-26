@@ -216,7 +216,13 @@ def map_flags(df: pd.DataFrame, result_status_df: pd.DataFrame) -> pd.DataFrame:
     #   1. wtmp_flag is NaN (no flag at all → no measurement taken)
     #   2. ResultValue is NaN/empty (value missing, even if a flag exists)
     no_flag_mask  = df["wtmp_flag"].isna()
-    no_value_mask = df["ResultValue"].isna() | (df["ResultValue"] == "")
+    # Catch pandas NaN, empty string, AND the literal string "NAN"/"nan"
+    # (the QA/QC app writes "NAN" for missing temperature values)
+    no_value_mask = (
+        df["ResultValue"].isna()
+        | (df["ResultValue"] == "")
+        | (df["ResultValue"].astype(str).str.strip().str.upper() == "NAN")
+    )
     missing_mask  = no_flag_mask | no_value_mask
 
     # Per DataStream schema (from Nell):
@@ -522,13 +528,31 @@ def main():
         sys.exit("No files were processed successfully. Check errors above.")
 
     # --- Write one output CSV + zip per station ---
-    print(f"Writing output files to '{output_dir}':")
-    for station_code, dfs in station_results.items():
+    print(f"\nWriting output files to '{output_dir}':")
+    all_station_dfs: list[pd.DataFrame] = []
+
+    for station_code, dfs in sorted(station_results.items()):
         combined = pd.concat(dfs, ignore_index=True)
 
-        # Write the CSV
+        # Write individual station CSV
         csv_out = output_dir / f"{station_code}_datastream.csv"
         combined.to_csv(csv_out, index=False)
+        print(f"  {csv_out.name}  ({len(combined):,} rows)")
+
+        all_station_dfs.append(combined)
+
+    # --- Concatenate all stations into one upload-ready CSV ---
+    combined_all = pd.concat(all_station_dfs, ignore_index=True)
+    combined_csv = output_dir / "ALL_STATIONS_datastream_upload.csv"
+    combined_all.to_csv(combined_csv, index=False)
+
+    # Also create a zipped version (DataStream may prefer zip for large files)
+    combined_zip = zip_csv(combined_csv)
+
+    print(f"\n  === Combined upload file ===")
+    print(f"  {combined_csv.name}  ({len(combined_all):,} total rows)")
+    print(f"  {combined_zip.name}")
+    print(f"\nDone! Upload '{combined_csv.name}' (or .zip) to DataStream.")
 
 if __name__ == "__main__":
     main()
