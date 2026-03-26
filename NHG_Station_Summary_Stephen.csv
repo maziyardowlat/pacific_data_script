@@ -15,7 +15,7 @@ Station,Site Name,First Deploy,Current Model,Current Serial,MX2201 Last Measurem
 01FW014,Nadina River Above Nadina Lake,2023-08-16,MX2203,unknown,2024-06-13 19:30,3,
 01FW015,Stuart River Above Nechako River,2023-05-03,MX2203,21731718,2025-06-11 16:30,3,
 01FW016,Necoslie River Above Stuart Lake,2023-06-27,MX2203,21731705,2024-08-13 20:45,3,
-01FW017,Nechako Above Cluculz Creek,N/A,N/A,N/A,N/A,0,Nothing in the deployments; assumed MX2201
+01FW017,Nechako Above Cluculz Creek,,MX2201,,,0,Nothing in the deployments; assumed MX2201
 01FW018,Chilako River Below Tatuk Lake,2023-06-22,MX2203,21731714,2025-06-26 17:30,3,Entire file under one serial spanning from 2022; 2024-07-17 deployment should be MX2203 but inferred MX2201
 01FW019,Middle River Above Trembleur Lake,2023-06-28,MX2203,21731728,2024-07-30 21:15,2,
 01FW020,Tsilcoh River Above Pinchi Lake,2023-06-27,MX2203,21731699,2024-08-13 22:00,3,
@@ -36,4 +36,4 @@ Station,Site Name,First Deploy,Current Model,Current Serial,MX2201 Last Measurem
 01NE003,Whiting Creek,2024-06-13,MX2203,21731727,2024-06-13 21:45,1,
 01NE004,Rhine Creek Above Sweeney Creek,2023-08-16,MX2203,21731698,2024-06-13 23:30,3,Has two MX2203 loggers deployed (NHG0312 + NHG0274)
 01NE005,Laventie Creek Above Tahtsa Lake,2023-08-31,MX2203,21731712,2024-06-26 20:00,2,
-01NE006,Chedakuz Creek Above Nechako Reservoir,N/A,N/A,N/A,N/A,0,"OK for now, but for the future make sure it's MX2203 as it doesn't say anything in the deployments"
+01NE006,Chedakuz Creek Above Nechako Reservoir,N/A,MX2201,N/A,N/A,0,"OK for now, but for the future make sure it's MX2203 as it doesn't say anything in the deployments"

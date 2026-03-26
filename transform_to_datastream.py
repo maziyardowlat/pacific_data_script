@@ -530,11 +530,5 @@ def main():
         csv_out = output_dir / f"{station_code}_datastream.csv"
         combined.to_csv(csv_out, index=False)
 
-        # Create a zipped copy alongside it
-        zip_out = zip_csv(csv_out)
-
-        print(f"  {csv_out.name}: {len(combined):,} rows written")
-        print(f"  {zip_out.name}: zipped ({zip_out.stat().st_size / 1024:.0f} KB)")
-
 if __name__ == "__main__":
     main()
