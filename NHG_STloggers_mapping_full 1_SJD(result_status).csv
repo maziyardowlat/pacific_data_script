@@ -9,5 +9,16 @@ V,Validated,Visit,,Data affected by field visit / equipment disturbance
 D,Validated,Duplicate,,Duplicate timestamp after rounding to 15-min
 A,Validated,Air/Dewatered,,Daily diurnal range > 10C (logger likely out of water)
 F,Validated,Failure,,Sensor failure or data quality issue
+"A, B",Validated,"Air/Dewatered, Backwater",,Diurnal range > 10C and below-freezing
+"A, S",Validated,"Air/Dewatered, Spike",,Diurnal range > 10C and spike detected
+"A, T",Validated,"Air/Dewatered, High temperature",,Diurnal range > 10C and temperature >= 35C
+"B, S",Validated,"Backwater, Spike",,Below-freezing and spike detected
+"B, T",Validated,"Backwater, High temperature",,Below-freezing and temperature >= 35C
+"S, T",Validated,"Spike, High temperature",,Spike detected and temperature >= 35C
+"A, B, S",Validated,"Air/Dewatered, Backwater, Spike",,Diurnal range > 10C and below-freezing and spike
+"A, B, T",Validated,"Air/Dewatered, Backwater, High temperature",,Diurnal range > 10C and below-freezing and high temp
+"A, S, T",Validated,"Air/Dewatered, Spike, High temperature",,Diurnal range > 10C and spike and high temp
+"B, S, T",Validated,"Backwater, Spike, High temperature",,Below-freezing and spike and high temp
+"A, B, S, T",Validated,"Air/Dewatered, Backwater, Spike, High temperature",,All concatenatable flags triggered
 AVG,Validated,Averaged,,Value was averaged between two loggers with Passing values
 C,Validated,Caution,,"Value was averaged, but neither logger had a Passing value"
